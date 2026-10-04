@@ -23,22 +23,23 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run check
       - run: npm run build
-      # The old official URL must not retain an outdated project collection.
+      # Keep explicit locale previews available; the legacy root points to Cloudflare.
       - name: Prepare legacy domain redirect
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: |
           mkdir -p legacy-redirect
+          cp -R out/. legacy-redirect/
           cat > legacy-redirect/index.html <<'HTML'
           <!doctype html>
           <html lang="en">
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta http-equiv="refresh" content="0; url=https://agentclub.dev/">
-            <link rel="canonical" href="https://agentclub.dev/">
+            <meta http-equiv="refresh" content="0; url=https://agentclub.dev/en/">
+            <link rel="canonical" href="https://agentclub.dev/en/">
             <title>Agent Club</title>
           </head>
-          <body><p>Agent Club has moved to <a href="https://agentclub.dev/">agentclub.dev</a>.</p></body>
+          <body><p>Agent Club has moved to <a href="https://agentclub.dev/en/">agentclub.dev</a>.</p></body>
           </html>
           HTML
       - uses: actions/upload-pages-artifact@v3

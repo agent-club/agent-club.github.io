@@ -1,0 +1,2 @@
+# English is the default; explicit locale URLs remain directly accessible.
+/ /en/ 302

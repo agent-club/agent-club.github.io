@@ -25,6 +25,7 @@ The collection is designed to grow. Desktop apps, web tools, browser extensions,
 - Browse projects by category and follow their product or public source links.
 - Explore original product illustrations and a moving orbital artwork.
 - Use the site on desktop or mobile, with keyboard-accessible navigation and optional motion.
+- Read in English at `/en/` or Simplified Chinese at `/zh/`, with English as the default.
 - Meet the ideas behind the club: practical value, human control, and lasting craft.
 
 Built with Next.js and served through Cloudflare. This repository is public; it contains the website, not the private source of the products it introduces.
@@ -58,6 +59,7 @@ Agent Club 汇集实用工具与有趣的交互实验。这个官网把它们放
 - 按分类浏览作品，进入产品页面或公开源码仓库。
 - 欣赏独立绘制的产品概念插画与动态轨道主视觉。
 - 在桌面和手机上使用，支持键盘导航和动效暂停。
+- 英文版使用 `/en/`，简体中文版使用 `/zh/`，默认进入英文版。
 - 了解我们的理念：解决真实问题、让人保持掌控、为长期使用打磨。
 
 官网基于 Next.js，由 Cloudflare 提供服务。本仓库公开，只包含官网本身，不包含所介绍产品的私有源码。

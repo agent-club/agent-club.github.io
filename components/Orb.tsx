@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { dictionaries, type Locale } from "@/lib/i18n";
 
-export function Orb() {
+export function Orb({ locale }: { locale: Locale }) {
+  const t = dictionaries[locale];
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const toggleRef = useRef<(() => void) | null>(null);
   const [paused, setPaused] = useState(false);
@@ -47,7 +49,7 @@ export function Orb() {
         points.forEach((point, index) =>
           index ? ctx.lineTo(point.x, point.y) : ctx.moveTo(point.x, point.y),
         );
-        ctx.strokeStyle = `rgba(183,239,119,${alpha})`;
+        ctx.strokeStyle = `rgba(36,91,234,${alpha})`;
         ctx.lineWidth = lineWidth;
         ctx.stroke();
       }
@@ -95,14 +97,14 @@ export function Orb() {
         const point = points[Math.floor((angle * 12 + ring * 57) % 120)];
         ctx.beginPath();
         ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = "#bcf77b";
+        ctx.fillStyle = "#245bea";
         ctx.fill();
       }
       // Stable stars preserve the composition through pause and resize.
       for (let n = 1; n < 40; n++) {
         const x = (((n * 127.3) % 100) / 100) * width;
         const y = (((n * 79.7) % 100) / 100) * height * 0.9;
-        ctx.fillStyle = n % 3 ? "#b3d6923b" : "#b3d69288";
+        ctx.fillStyle = n % 3 ? "#526eb73b" : "#245bea88";
         ctx.fillRect(x, y, n % 3 ? 1 : 2, n % 3 ? 1 : 2);
       }
     }
@@ -173,13 +175,13 @@ export function Orb() {
         <canvas ref={canvasRef} />
         <span className="orb-cross cross-top">+</span>
         <span className="orb-cross cross-bottom">+</span>
-        <span className="orb-label label-top">IDEA → BUILD → REFINE</span>
+        <span className="orb-label label-top">{t.orbSteps}</span>
         <div className="orb-caption">
-          <span className="signal" /> POSSIBILITIES IN MOTION <span>001—∞</span>
+          <span className="signal" /> {t.orbCaption} <span>001—∞</span>
         </div>
-        <span className="orbit-chip chip-one">craft</span>
-        <span className="orbit-chip chip-two">curiosity</span>
-        <span className="orbit-chip chip-three">code</span>
+        <span className="orbit-chip chip-one">{t.orbChips[0]}</span>
+        <span className="orbit-chip chip-two">{t.orbChips[1]}</span>
+        <span className="orbit-chip chip-three">{t.orbChips[2]}</span>
       </div>
       <button
         type="button"
@@ -188,7 +190,7 @@ export function Orb() {
         onClick={() => toggleRef.current?.()}
       >
         <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
-        {paused ? "开启动效" : "暂停动效"}
+        {paused ? t.resume : t.pause}
       </button>
     </>
   );

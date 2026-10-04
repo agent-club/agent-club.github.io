@@ -1,7 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { dictionaries, type Locale } from "@/lib/i18n";
+import { LanguageSwitch } from "./LanguageSwitch";
 
-export function SiteHeader({ count }: { count: number }) {
+export function SiteHeader({
+  count,
+  locale,
+}: {
+  count: number;
+  locale: Locale;
+}) {
+  const t = dictionaries[locale];
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -32,7 +41,7 @@ export function SiteHeader({ count }: { count: number }) {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#" aria-label="Agent Club 首页">
+        <a className="brand" href="#" aria-label={t.home}>
           <svg className="brand-icon" viewBox="0 0 40 40" aria-hidden="true">
             <path
               d="m4 30 13-24h9L13 30zm18 0L35 6h5L27 30z"
@@ -45,21 +54,10 @@ export function SiteHeader({ count }: { count: number }) {
             <span className="brand-dot">.</span>
           </span>
         </a>
-        <button
-          ref={toggle}
-          className="menu-toggle"
-          type="button"
-          aria-label={open ? "关闭导航菜单" : "打开导航菜单"}
-          aria-expanded={open}
-          aria-controls="navigation"
-          onClick={() => setOpen(!open)}
-        >
-          <span />
-          <span />
-        </button>
+
         <nav
           id="navigation"
-          aria-label="主导航"
+          aria-label={t.navLabel}
           data-open={open}
           onClick={(event) => {
             if (event.target instanceof Element && event.target.closest("a"))
@@ -67,11 +65,11 @@ export function SiteHeader({ count }: { count: number }) {
           }}
         >
           <a href="#projects">
-            作品集 <span className="nav-count">{count}</span>
+            {t.work} <span className="nav-count">{count}</span>
           </a>
-          <a href="#about">关于我们</a>
+          <a href="#about">{t.about}</a>
           <a href="#next">
-            下一站 <span className="mini-dot" />
+            {t.next} <span className="mini-dot" />
           </a>
           <a
             className="github-nav"
@@ -82,6 +80,21 @@ export function SiteHeader({ count }: { count: number }) {
             GitHub <span aria-hidden="true">↗</span>
           </a>
         </nav>
+        <div className="header-actions">
+          <LanguageSwitch locale={locale} />
+          <button
+            ref={toggle}
+            className="menu-toggle"
+            type="button"
+            aria-label={open ? t.closeMenu : t.openMenu}
+            aria-expanded={open}
+            aria-controls="navigation"
+            onClick={() => setOpen(!open)}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
     </header>
   );

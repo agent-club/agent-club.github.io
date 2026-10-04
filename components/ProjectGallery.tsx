@@ -1,18 +1,27 @@
 "use client";
 import { useState, type CSSProperties } from "react";
 import type { Category, Project } from "@/lib/projects";
-import { illustrations } from "@/lib/illustrations";
+import { getIllustrations } from "@/lib/illustrations";
+import { dictionaries, type Locale } from "@/lib/i18n";
 
-const filters: { value: "all" | Category; label: string }[] = [
-  { value: "all", label: "全部作品" },
-  { value: "desktop", label: "桌面应用" },
-  { value: "web", label: "Web 工具" },
-  { value: "extension", label: "浏览器扩展" },
-  { value: "play", label: "交互实验" },
-];
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
-export function ProjectGallery({ projects }: { projects: Project[] }) {
+export function ProjectGallery({
+  projects,
+  locale,
+}: {
+  projects: Project[];
+  locale: Locale;
+}) {
+  const t = dictionaries[locale];
+  const illustrations = getIllustrations(locale);
+  const filters: { value: "all" | Category; label: string }[] = [
+    { value: "all", label: t.all },
+    ...Object.entries(t.categories).map(([value, label]) => ({
+      value: value as Category,
+      label,
+    })),
+  ];
   const [filter, setFilter] = useState<"all" | Category>("all");
   const visibleFilters = filters.filter(
     (item) =>
@@ -25,7 +34,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
   return (
     <>
       <div className="project-toolbar">
-        <div className="filters" role="group" aria-label="按项目类型筛选">
+        <div className="filters" role="group" aria-label={t.filterLabel}>
           {visibleFilters.map((item) => (
             <button
               key={item.value}
@@ -45,7 +54,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           aria-live="polite"
           aria-atomic="true"
         >
-          {count} 件作品
+          {count} {t.resultLabel}
         </span>
       </div>
       <div className="project-grid">
@@ -61,7 +70,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               <div
                 className={`project-art art-${project.id}`}
                 role="img"
-                aria-label={`${project.name} 概念插画，并非产品截图`}
+                aria-label={`${project.name} ${t.conceptAlt}`}
               >
                 <span className="art-cross">+</span>
                 {/* Only checked-in artwork is allowed here; repository/API content never becomes HTML. */}
@@ -72,7 +81,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                   }}
                 />
                 <span className="art-note">
-                  CONCEPT / {String(index + 1).padStart(2, "0")}
+                  {t.concept} / {String(index + 1).padStart(2, "0")}
                 </span>
               </div>
             )}
@@ -87,7 +96,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               <h3>{project.name}</h3>
               <p className="project-headline">{project.headline}</p>
               <p className="project-description">{project.description}</p>
-              <ul className="project-tags" aria-label="项目特点">
+              <ul className="project-tags" aria-label={t.tagsLabel}>
                 {project.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
                 ))}
@@ -110,7 +119,9 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={
-                      project.url ? `${project.name} GitHub 仓库` : undefined
+                      project.url
+                        ? `${project.name} ${t.sourceLabel}`
+                        : undefined
                     }
                   >
                     {project.url ? "GitHub" : project.action}
@@ -122,11 +133,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           </article>
         ))}
       </div>
-      {count === 0 && (
-        <p className="empty-projects">
-          这个分类的作品还在路上，先看看其他作品吧。
-        </p>
-      )}
+      {count === 0 && <p className="empty-projects">{t.empty}</p>}
     </>
   );
 }

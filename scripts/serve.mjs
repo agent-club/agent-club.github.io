@@ -16,10 +16,15 @@ const types = {
 createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost");
-    const path = resolve(
-      root,
-      `.${decodeURIComponent(url.pathname === "/" ? "/index.html" : url.pathname)}`,
-    );
+    if (url.pathname === "/") {
+      res.writeHead(302, { Location: "/en/" });
+      res.end();
+      return;
+    }
+    const pathname = url.pathname.endsWith("/")
+      ? `${url.pathname}index.html`
+      : url.pathname;
+    const path = resolve(root, `.${decodeURIComponent(pathname)}`);
     if (!path.startsWith(root + sep)) {
       res.writeHead(403);
       res.end();
