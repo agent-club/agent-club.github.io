@@ -1,0 +1,3 @@
+# Next exports this image without an extension; preserve its media type.
+/opengraph-image
+  Content-Type: image/png

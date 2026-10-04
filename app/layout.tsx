@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://agent-club.github.io"),
+  metadataBase: new URL("https://agentclub.dev"),
   title: "Agent Club — Small tools. Big possibilities.",
   description:
     "小而锋利的工具，真实有用的工作流。探索 Agent Club 的截图、写作、日历、浏览器扩展与交互实验。",

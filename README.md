@@ -1,63 +1,65 @@
 # Agent Club
 
-Agent Club 官网。深色视觉、动态线框轨道与产品概念插画，展示组织中的工具和交互实验。
+**Small tools. Big possibilities.**
 
-线上地址：<https://agent-club.github.io/>
+[Visit the website](https://agentclub.dev) · [Explore the organization](https://github.com/agent-club) · [简体中文](#简体中文)
 
-## 本地运行
+Agent Club is the home of a growing collection of practical tools and playful experiments. This website brings them together: discover what each project does, find the right tool for your workflow, and follow the next idea as it takes shape.
 
-基于 Next.js App Router、React 和 TypeScript。需要 Node.js 22 或更新版本。
+We believe in small, sharp tools that solve real problems, keep people in control, and feel good to use every day.
 
-```sh
-npm ci --ignore-scripts
-npm run dev
-```
+## Explore the collection
 
-访问 <http://127.0.0.1:4173>。开发模式支持热更新。
+| Project                                                    | What it does                                                                                                 |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [PinboardShot](https://pinboardshot.agentclub.dev/)        | A native macOS tool for capturing, annotating, and pinning screenshots.                                      |
+| [Saylit](https://saylit.agentclub.dev/)                    | A Markdown writing studio with live layouts and publishing-ready formatting for WeChat articles.             |
+| [Daymark](https://daymark.agentclub.dev/)                  | Chinese holiday, solar-term, and adjusted-workday subscriptions for Apple Calendar.                          |
+| [History Sweep](https://sweep.agentclub.dev/)              | A Chrome extension for finding, reviewing, and clearing selected browsing history on your device.            |
+| [Page QR](https://github.com/agent-club/page-qr-extension) | An offline Chrome extension that turns webpages or text into customizable QR codes, with PNG and SVG export. |
+| [Spiral Bloom](https://spiral.agentclub.dev/)              | An interactive spirograph game with neon feedback and speed-reactive audio.                                  |
 
-```sh
-npm run check
-npm run build
-```
+The collection is designed to grow. Desktop apps, web tools, browser extensions, and interactive experiments share one place without losing their own character.
 
-## 新增项目
+## The website experience
 
-编辑 `lib/projects.json`。每条包含 `id`、`name`、`category`、`label`、`headline`、`description`、`tags`、`action`、`color`，以及经核实的 `url` 和／或公开 `repository`。分类为 `desktop`、`web`、`extension`、`play`。
+- Browse projects by category and follow their product or public source links.
+- Explore original product illustrations and a moving orbital artwork.
+- Use the site on desktop or mobile, with keyboard-accessible navigation and optional motion.
+- Meet the ideas behind the club: practical value, human control, and lasting craft.
 
-项目数、卡片与筛选结果随数据变化。缺少官网或公开仓库时不生成对应入口。没有专属插画的新项目显示内容卡片；可在 `lib/illustrations.ts` 的 `illustrations` 中增加经过审核的概念插画。不要将私有源码、凭据或用户数据放入公开数据。
+Built with Next.js and served through Cloudflare. This repository is public; it contains the website, not the private source of the products it introduces.
 
-## 部署
+---
 
-GitHub Pages 使用 GitHub Actions 构建并发布 `out/`，主分支推送自动更新。仓库 Settings → Pages → Source 为 GitHub Actions。
+## 简体中文
 
-若使用其他域名，在 `app/layout.tsx` 修改 metadataBase，并同步修改 `app/sitemap.ts` 和 `app/robots.ts` 的 URL。域名与 DNS 配置由维护者管理。
+**小而锋利的工具，让想法走进真实生活。**
 
-## 设计与内容
+[访问官网](https://agentclub.dev) · [浏览组织](https://github.com/agent-club)
 
-- 品牌信息来自组织公开简介；项目介绍来自公开 README 和公开产品页。
-- Saylit 仅指向公开产品页，不展示私有仓库。
-- 页码目前提供公开源码入口，不承诺商店上架或官网公开访问。
-- 卡片中的图形为概念插画与虚构演示文字，不是产品截图；日历数字不表达真实节假日安排，二维码图形不可用于扫码。
-- 参考 Linear 官网的内容层级和 Resend 官网的深色光影关系，重新设计 Agent Club 的标识、轨道艺术和产品图形。
-- 动效可暂停，遵循系统减少动态效果偏好；主视觉离开视口或标签页隐藏时停止绘制。
-- 页面静态生成，无远程字体、追踪脚本或运行时 API 请求。
+Agent Club 汇集实用工具与有趣的交互实验。这个官网把它们放在同一个地方，让你了解每个项目的用途、找到适合自己工作流的工具，也看到下一个好想法如何发生。
 
-## 文件
+我们喜欢解决真实问题的小工具：边界清楚，让人保持掌控，并且经得起每一天的使用。
 
-```text
-app/page.tsx           官网首页（服务端组件）
-app/layout.tsx         布局与 SEO 元数据
-app/globals.css        样式与响应式布局
-app/robots.ts          搜索引擎规则
-app/sitemap.ts         站点地图
-components/            React 筛选、移动导航与 Canvas 动效
-lib/projects.json      经审核的项目数据
-lib/projects.ts        项目类型与数据校验
-lib/illustrations.ts   本地概念插画
-next.config.ts         静态导出配置
-scripts/serve.mjs      生产静态文件预览
-public/favicon.svg     品牌图标
-.github/workflows/     Pages 构建和发布
-```
+### 探索作品
 
-生产构建输出 `out/`。运行 `npm run preview` 可检查导出产物；`next start` 不适用于静态导出模式。
+| 项目                                                            | 用途                                                    |
+| --------------------------------------------------------------- | ------------------------------------------------------- |
+| [PinboardShot](https://pinboardshot.agentclub.dev/)             | 原生 macOS 截图、标注与贴屏工具。                       |
+| [简言 Saylit](https://saylit.agentclub.dev/)                    | Markdown 写作工作台，实时预览文章版式并复制到公众号。   |
+| [Daymark](https://daymark.agentclub.dev/)                       | 将中国节假日、二十四节气和调休提醒带进 Apple 日历。     |
+| [History Sweep](https://sweep.agentclub.dev/)                   | 在本机查找、审阅并清理指定浏览记录的 Chrome 扩展。      |
+| [页码 Page QR](https://github.com/agent-club/page-qr-extension) | 离线生成网页或文字二维码，自定义配色，导出 PNG 或 SVG。 |
+| [Spiral Bloom](https://spiral.agentclub.dev/)                   | 随操作生长的万花轮游戏，配合霓虹反馈与速度声浪。        |
+
+这个集合会持续生长。桌面应用、Web 工具、浏览器扩展与交互实验在这里相遇，也保留各自的个性。
+
+### 官网体验
+
+- 按分类浏览作品，进入产品页面或公开源码仓库。
+- 欣赏独立绘制的产品概念插画与动态轨道主视觉。
+- 在桌面和手机上使用，支持键盘导航和动效暂停。
+- 了解我们的理念：解决真实问题、让人保持掌控、为长期使用打磨。
+
+官网基于 Next.js，由 Cloudflare 提供服务。本仓库公开，只包含官网本身，不包含所介绍产品的私有源码。
