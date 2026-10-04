@@ -2,6 +2,8 @@
 .project-art.refined-art {
   height: 286px;
   isolation: isolate;
+  /* Decorative rings must not create a scroll container when playback receives focus. */
+  overflow: clip;
   background-image:
     radial-gradient(ellipse at 50% 45%, #ffffffa6, transparent 70%),
     linear-gradient(145deg, #ffffff55, transparent);
