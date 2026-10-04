@@ -120,7 +120,8 @@ export function Orb() {
       draw();
     }
     function tick(time: number) {
-      angle += Math.min((time - previous) / 1000, 0.05) * 0.12;
+      // A frame timestamp can precede the resume call; elapsed time must stay nonnegative.
+      angle += Math.max(0, Math.min((time - previous) / 1000, 0.05)) * 0.12;
       previous = time;
       draw();
       frame = requestAnimationFrame(tick);
