@@ -1,0 +1,78 @@
+[
+  {
+    "id": "pinboardshot",
+    "name": "PinboardShot",
+    "category": "desktop",
+    "label": "macOS 原生应用",
+    "headline": "把灵感，贴在眼前。",
+    "description": "截图、标注、OCR、贴屏。原生 macOS 工具，让屏幕上的信息成为随手可用的参考。",
+    "tags": ["Swift", "截图与贴屏", "本机处理"],
+    "url": "https://pinboardshot.agentclub.dev/",
+    "repository": "https://github.com/agent-club/PinboardShot",
+    "action": "了解 PinboardShot",
+    "color": "#bcf77b"
+  },
+  {
+    "id": "saylit",
+    "name": "简言 Saylit",
+    "category": "web",
+    "label": "写作工作台",
+    "headline": "专注表达，其余交给排版。",
+    "description": "用 Markdown 写作，实时预览文章版式，一键复制到公众号。让好内容，流动起来。",
+    "tags": ["Markdown", "公众号排版", "浏览器本地保存"],
+    "url": "https://saylit.agentclub.dev/",
+    "action": "开始写作",
+    "color": "#d8b7ff"
+  },
+  {
+    "id": "daymark",
+    "name": "Daymark",
+    "category": "web",
+    "label": "日历订阅服务",
+    "headline": "重要的日子，提前知道。",
+    "description": "将中国节假日、二十四节气与调休提醒带进 Apple 日历。一次订阅，跟上日子的节奏。",
+    "tags": ["Apple 日历", "节假日", "节气与调休"],
+    "url": "https://daymark.agentclub.dev/",
+    "repository": "https://github.com/agent-club/daymark",
+    "action": "了解日历订阅",
+    "color": "#ffc084"
+  },
+  {
+    "id": "history-sweep",
+    "name": "History Sweep",
+    "category": "extension",
+    "label": "Chrome 扩展",
+    "headline": "清理历史，留下你想留下的。",
+    "description": "按网站、关键词和日期查找浏览记录，审阅后批量清理。搜索与处理都在本机完成。",
+    "tags": ["精准搜索", "批量清理", "本机处理"],
+    "url": "https://sweep.agentclub.dev/",
+    "repository": "https://github.com/agent-club/history-sweep",
+    "action": "了解 History Sweep",
+    "color": "#83d9f7"
+  },
+  {
+    "id": "page-qr",
+    "name": "页码 Page QR",
+    "category": "extension",
+    "label": "Chrome 扩展",
+    "headline": "从这个屏幕，到下一个屏幕。",
+    "description": "把当前网页或自定义文字生成二维码，调整配色与尺寸，导出 PNG 或 SVG。离线也能使用。",
+    "tags": ["离线二维码", "自定义配色", "PNG / SVG"],
+    "repository": "https://github.com/agent-club/page-qr-extension",
+    "action": "获取页码源码",
+    "color": "#a4a9ff"
+  },
+  {
+    "id": "spiral",
+    "name": "Spiral Bloom",
+    "category": "play",
+    "label": "交互实验",
+    "headline": "让每一次转动，开出一朵花。",
+    "description": "一个实时万花轮游戏。鼠标、触控或键盘驱动轨迹生长，手速点亮霓虹，也唤醒声浪。",
+    "tags": ["万花轮", "速度声浪", "霓虹反馈"],
+    "url": "https://spiral.agentclub.dev/",
+    "repository": "https://github.com/agent-club/spiral",
+    "action": "进入 Spiral Bloom",
+    "color": "#fa9ed2"
+  }
+]
