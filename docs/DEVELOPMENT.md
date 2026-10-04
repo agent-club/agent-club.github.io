@@ -19,13 +19,13 @@ Next.js exports the website to `out/`. The preview command serves those producti
 
 ## Project entries
 
-Edit `lib/projects.json` to add a reviewed project. Each entry has an ID, title, category, description, tags, visual color, and verified product and/or public source links. Categories are `desktop`, `web`, `extension`, and `play`.
+Follow the project showcase rules in `AGENTS.md` before adding or synchronizing projects. Edit `lib/projects.json` to add a reviewed project. Each entry has an ID, title, category, description, tags, visual color, and verified product and/or public source links. Categories are `desktop`, `web`, `extension`, and `play`.
 
 Counts and category filters use that data. Missing links are omitted. Private repositories must not be linked. Add original illustrations in `lib/illustrations.ts` where appropriate; artwork must remain checked-in source rather than API-provided HTML.
 
 ## Deployment
 
-The production domain is <https://agentclub.dev>. Cloudflare Workers Static Assets serves the Next.js export using `wrangler.jsonc`.
+The production domain is <https://agentclub.dev>. GitHub Actions validates changes and keeps the former GitHub Pages entry point redirected to this domain. Cloudflare Workers Static Assets serves the Next.js export using `wrangler.jsonc`.
 
 ```sh
 npm run deploy

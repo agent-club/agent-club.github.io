@@ -14,6 +14,11 @@ const Arrow = () => <span aria-hidden="true">↗</span>;
 
 export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<"all" | Category>("all");
+  const visibleFilters = filters.filter(
+    (item) =>
+      item.value === "all" ||
+      projects.some((project) => project.category === item.value),
+  );
   const count = projects.filter(
     (project) => filter === "all" || project.category === filter,
   ).length;
@@ -21,7 +26,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     <>
       <div className="project-toolbar">
         <div className="filters" role="group" aria-label="按项目类型筛选">
-          {filters.map((item) => (
+          {visibleFilters.map((item) => (
             <button
               key={item.value}
               type="button"

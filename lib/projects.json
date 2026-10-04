@@ -61,18 +61,5 @@
     "repository": "https://github.com/agent-club/page-qr-extension",
     "action": "获取页码源码",
     "color": "#a4a9ff"
-  },
-  {
-    "id": "spiral",
-    "name": "Spiral Bloom",
-    "category": "play",
-    "label": "交互实验",
-    "headline": "让每一次转动，开出一朵花。",
-    "description": "一个实时万花轮游戏。鼠标、触控或键盘驱动轨迹生长，手速点亮霓虹，也唤醒声浪。",
-    "tags": ["万花轮", "速度声浪", "霓虹反馈"],
-    "url": "https://spiral.agentclub.dev/",
-    "repository": "https://github.com/agent-club/spiral",
-    "action": "进入 Spiral Bloom",
-    "color": "#fa9ed2"
   }
 ]

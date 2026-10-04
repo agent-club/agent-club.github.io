@@ -1,4 +1,4 @@
-name: Validate website
+name: Validate website and redirect legacy domain
 on:
   push:
     branches: [main]
@@ -23,3 +23,38 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run check
       - run: npm run build
+      # The old official URL must not retain an outdated project collection.
+      - name: Prepare legacy domain redirect
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          mkdir -p legacy-redirect
+          cat > legacy-redirect/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="refresh" content="0; url=https://agentclub.dev/">
+            <link rel="canonical" href="https://agentclub.dev/">
+            <title>Agent Club</title>
+          </head>
+          <body><p>Agent Club has moved to <a href="https://agentclub.dev/">agentclub.dev</a>.</p></body>
+          </html>
+          HTML
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: legacy-redirect
+  redirect:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

@@ -17,7 +17,6 @@ We believe in small, sharp tools that solve real problems, keep people in contro
 | [Daymark](https://daymark.agentclub.dev/)                  | Chinese holiday, solar-term, and adjusted-workday subscriptions for Apple Calendar.                          |
 | [History Sweep](https://sweep.agentclub.dev/)              | A Chrome extension for finding, reviewing, and clearing selected browsing history on your device.            |
 | [Page QR](https://github.com/agent-club/page-qr-extension) | An offline Chrome extension that turns webpages or text into customizable QR codes, with PNG and SVG export. |
-| [Spiral Bloom](https://spiral.agentclub.dev/)              | An interactive spirograph game with neon feedback and speed-reactive audio.                                  |
 
 The collection is designed to grow. Desktop apps, web tools, browser extensions, and interactive experiments share one place without losing their own character.
 
@@ -51,7 +50,6 @@ Agent Club 汇集实用工具与有趣的交互实验。这个官网把它们放
 | [Daymark](https://daymark.agentclub.dev/)                       | 将中国节假日、二十四节气和调休提醒带进 Apple 日历。     |
 | [History Sweep](https://sweep.agentclub.dev/)                   | 在本机查找、审阅并清理指定浏览记录的 Chrome 扩展。      |
 | [页码 Page QR](https://github.com/agent-club/page-qr-extension) | 离线生成网页或文字二维码，自定义配色，导出 PNG 或 SVG。 |
-| [Spiral Bloom](https://spiral.agentclub.dev/)                   | 随操作生长的万花轮游戏，配合霓虹反馈与速度声浪。        |
 
 这个集合会持续生长。桌面应用、Web 工具、浏览器扩展与交互实验在这里相遇，也保留各自的个性。
 

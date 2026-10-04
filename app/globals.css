@@ -1364,42 +1364,6 @@ footer {
   border-radius: 3px;
   background: #242942;
 }
-.art-spiral {
-  background-color: #201321;
-  background-image: radial-gradient(
-    ellipse at center,
-    #aa398c1c,
-    transparent 75%
-  );
-}
-.spiral-flower {
-  width: 214px;
-  height: 214px;
-  filter: drop-shadow(0 0 4px #f48cce66);
-  animation: turn 75s linear infinite;
-}
-.spiral-label {
-  position: absolute;
-  top: 17px;
-  right: 16px;
-  font: 6px var(--mono);
-  color: #bd86b8;
-  letter-spacing: 0.6px;
-}
-.spiral-rpm {
-  position: absolute;
-  left: 15px;
-  bottom: 20px;
-  color: #dca0d6;
-  font: 24px var(--mono);
-}
-.spiral-rpm small {
-  display: block;
-  font: 5px var(--mono);
-  letter-spacing: 0.4px;
-  color: #a3769f;
-  margin-top: 4px;
-}
 @keyframes turn {
   to {
     transform: rotate(360deg);
