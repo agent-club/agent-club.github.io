@@ -1146,7 +1146,8 @@
     width: 203px;
   }
   .demo-calendar-seal {
-    right: 12px;
+    /* The decorative stamp would cover date cells on narrow cards. */
+    display: none;
   }
   .demo-type-title {
     font-size: 6px;
