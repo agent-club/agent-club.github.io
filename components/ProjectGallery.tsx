@@ -54,7 +54,7 @@ export function ProjectGallery({
           aria-live="polite"
           aria-atomic="true"
         >
-          {count} {t.resultLabel}
+          {count} {count === 1 ? t.resultSingular : t.resultLabel}
         </span>
       </div>
       <div className="project-grid">

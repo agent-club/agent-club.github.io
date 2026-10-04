@@ -1929,3 +1929,23 @@ footer {
     max-width: 390px;
   }
 }
+
+@media (max-width: 700px) {
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 18px 23px;
+  }
+  .hero-actions .button-primary,
+  .hero-actions .button-text {
+    white-space: nowrap;
+  }
+  .language-switch {
+    font-size: 10px;
+  }
+  .language-switch a,
+  .language-switch span {
+    display: flex;
+    align-items: center;
+    min-height: 28px;
+  }
+}

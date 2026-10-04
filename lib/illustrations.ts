@@ -1,6 +1,6 @@
 import type { Locale } from "./i18n";
 
-const chineseIllustrations: Record<string, string> = {
+const baseIllustrations: Record<string, string> = {
   pinboardshot:
     '<div class="pin-window"><div class="window-dots"><i></i><i></i><i></i><span>Capture something good.</span></div><div class="pin-landscape"><div class="landscape-sun"></div><div class="landscape-hill"></div><div class="landscape-hill second"></div><div class="crop-frame"><i></i><i></i><i></i><i></i><span>640 × 400</span></div><svg class="annotation-arrow" viewBox="0 0 100 60"><path d="M5 50Q40 5 85 22m-15-13 15 13-20 10"/></svg></div><div class="pin-tools">↖ <span>□</span> ○ <span>↗</span> T <b>贴在屏幕上 ↗</b></div></div><span class="floating-badge">⌘ ⇧ A <i></i> Capture. Annotate. Pin.</span>',
   saylit:
@@ -62,9 +62,25 @@ const translations = {
 };
 
 const englishIllustrations = Object.fromEntries(
-  Object.entries(chineseIllustrations).map(([id, artwork]) => [
+  Object.entries(baseIllustrations).map(([id, artwork]) => [
     id,
     Object.entries(translations).reduce(
+      (html, [from, to]) => html.replaceAll(from, to),
+      artwork,
+    ),
+  ]),
+);
+const chineseText: Record<string, string> = {
+  "Capture something good.": "捕捉一个好想法。",
+  "Capture. Annotate. Pin.": "截图。标注。贴屏。",
+  "THE ART OF EXPRESSION": "表达的艺术",
+  "Less noise. More meaning.": "少些干扰，多些表达。",
+  "YOUR LINK.<br>YOUR STYLE.": "你的链接。<br>你的风格。",
+};
+const chineseIllustrations = Object.fromEntries(
+  Object.entries(baseIllustrations).map(([id, artwork]) => [
+    id,
+    Object.entries(chineseText).reduce(
       (html, [from, to]) => html.replaceAll(from, to),
       artwork,
     ),
