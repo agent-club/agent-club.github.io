@@ -2,6 +2,7 @@
 import { useState, type CSSProperties } from "react";
 import type { Category, Project } from "@/lib/projects";
 import { getIllustrations } from "@/lib/illustrations";
+import { ProjectArtwork } from "./ProjectArtwork";
 import { dictionaries, type Locale } from "@/lib/i18n";
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
@@ -67,23 +68,13 @@ export function ProjectGallery({
             style={{ "--project-color": project.color } as CSSProperties}
           >
             {illustrations[project.id] && (
-              <div
-                className={`project-art art-${project.id}`}
-                role="img"
-                aria-label={`${project.name} ${t.conceptAlt}`}
-              >
-                <span className="art-cross">+</span>
-                {/* Only checked-in artwork is allowed here; repository/API content never becomes HTML. */}
-                <div
-                  className="art-contents"
-                  dangerouslySetInnerHTML={{
-                    __html: illustrations[project.id],
-                  }}
-                />
-                <span className="art-note">
-                  {t.concept} / {String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
+              <ProjectArtwork
+                artwork={illustrations[project.id]}
+                name={project.name}
+                id={project.id}
+                index={index}
+                locale={locale}
+              />
             )}
             <div className="project-info">
               <div className="project-meta">
