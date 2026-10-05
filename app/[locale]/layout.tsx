@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { dictionaries, isLocale, locales } from "@/lib/i18n";
 import { localeMetadata } from "@/lib/metadata";
 import "../globals.css";
+import "../interactions.css";
 
 export { viewport } from "@/lib/metadata";
 export const dynamicParams = false;

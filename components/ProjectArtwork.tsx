@@ -75,6 +75,9 @@ export function ProjectArtwork({
           )}
         </svg>
       </button>
+      <span className="demo-cycle" aria-hidden="true">
+        <i />
+      </span>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { Category, Project } from "@/lib/projects";
 import { getIllustrations } from "@/lib/illustrations";
 import { ProjectArtwork } from "./ProjectArtwork";
@@ -14,6 +14,24 @@ export function ProjectGallery({
   projects: Project[];
   locale: Locale;
 }) {
+  const grid = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const cards = grid.current?.querySelectorAll<HTMLElement>(".project-card");
+    if (!cards) return;
+    // Reveal once on entry; normal source content remains visible without JavaScript.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.setAttribute("data-revealed", "true");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.08 },
+    );
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
   const t = dictionaries[locale];
   const illustrations = getIllustrations(locale);
   const filters: { value: "all" | Category; label: string }[] = [
@@ -58,14 +76,20 @@ export function ProjectGallery({
           {count} {count === 1 ? t.resultSingular : t.resultLabel}
         </span>
       </div>
-      <div className="project-grid">
+      <div className="project-grid" ref={grid}>
         {projects.map((project, index) => (
           <article
             key={project.id}
             className="project-card"
             data-category={project.category}
+            data-project={project.id}
             hidden={filter !== "all" && project.category !== filter}
-            style={{ "--project-color": project.color } as CSSProperties}
+            style={
+              {
+                "--project-color": project.color,
+                "--card-delay": `${(index % 3) * 70}ms`,
+              } as CSSProperties
+            }
           >
             {illustrations[project.id] && (
               <ProjectArtwork
